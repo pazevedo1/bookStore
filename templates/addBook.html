@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <style>
+         /* this is the css for all the header navigation and body */
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #5A3727;
+          position: fixed;
+        }
+    
+        li {
+          float: left;
+        }
+    
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 5px 5px;
+          font-size: 20px;
+        }
+    
+        li a:hover {
+          background-color: #3d2b21;
+        }
+        body {
+            text-align: center;
+        }
+        form {
+            display: inline-block;
+        }
+    </style>
+    <ul>
+        <!-- this is the navigation form, redirects to certain pages, requires user to have admin session to access add stock -->
+        <li><a class='active' href=http://127.0.0.1:5000> Home</a></li>
+        <li><a href=http://127.0.0.1:5000/logout>Log Out</a></li>
+		{% if 'admin' in session %}  
+		<li><a href=http://127.0.0.1:5000/addBook>Stock</a></li>
+		{% endif %}
+        <li><a href=http://127.0.0.1:5000/showStock>Stock</a></li>
+    </ul>
+<head>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title></title>
+</head>
+<body style="background-color:powderblue;">
+<h1 align="center"><br>
+</h1>
+<br>
+<br>
+<h1>Book Store Add</h1>
+<p>Insert Data<br>
+</p>
+<!-- form to insert the data into table -->
+<form action="{{page}}" method="post" enctype="multipart/form-data"> 
+<label for="bookName">Book Name:</label><br>
+<input id="bookName" name="bookName" value="" type="text"><br>
+
+<label for="author">Author:</label><br>
+<input id="author" name="author" value="" type="text"><br>
+
+<label for="pubDate">Publication Date:</label><br>
+<input id="pubDate" name="pubDate" value="" type="date"><br>
+
+<label for="ISBN">ISBN-13 Number:</label><br>
+<input id="ISBN" name="ISBN" value="" type="number"><br>
+
+<label for="desc">Description:</label><br>
+<!-- <input id="desc" name="desc" value="" type="text"><br> -->
+<textarea id="desc" name="desc" value="" rows="10" cols="30" type="text"> </textarea><br>
+
+<label for="traVal">Trade Value(£):</label><br>
+<input id="traVal" name="traVal" value="50" type="range" min = "1" max = "100" oninput= "this.nextElementSibling.value = this.value">
+<output>50</output><br>
+<label for="retPrice">Retail Price(£):</label><br>
+<input id="retPrice" name="retPrice" value="50" type="range" min = "1" max = "100" oninput= "this.nextElementSibling.value = this.value">
+<output>50</output><br>
+<label for="quant">Quantity:</label><br>
+<input id="quant" name="quant" value="1" type="range" min = "1" max = "20" oninput=" this.nextElementSibling.value = this.value">
+<output>1</output><br>
+<input id ="image" name="image" type="file"  accept="image/x-png,image/gif,image/jpeg,image/jpg" /><br>
+<!-- <input type="file" id = "image" style="display: none;"><br> -->
+<!-- <img id="fileupload" name="filetoupload" src="../../static/images\book-images\img.jpg"><br> -->
+<br>
+<input value="Submit" type="submit"> </form>
+</div>
+</body>
+</html>

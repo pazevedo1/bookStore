@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        /* this is the css for all the header navigation and body */
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #5A3727;
+          position: fixed;
+        }
+    
+        li {
+          float: left;
+        }
+    
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 5px 5px;
+          font-size: 20px;
+        }
+    
+        li a:hover {
+          background-color: #3d2b21;
+        }
+
+        body {
+            text-align: center;
+        }
+        form {
+            display: inline-block;
+        }
+    </style>
+    <ul>
+        <!-- this is the navigation form, redirects to certain pages, requires user to have admin session to access add stock -->
+        <li><a class='active' href=http://127.0.0.1:5000> Home</a></li>
+        <li><a href=http://127.0.0.1:5000/logout>Log Out</a></li>
+		{% if 'admin' in session %}  
+		<li><a href=http://127.0.0.1:5000/addBook>Add Stock</a></li>
+		{% endif %}
+        <li><a href=http://127.0.0.1:5000/showStock>Stock</a></li>
+    </ul>
+<head>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title></title>
+</head>
+<body style="background-color:powderblue;">
+<h1 align="center"><br>
+</h1>
+<br>
+<br>
+<h1 style="text-align:center;">Pay Now</h1>
+<p style="text-align:center;">Insert Information<br>
+</p>
+<!-- We create a form for the user to isnert the account and pin numbers -->
+<form action="{{page}}" method="post" enctype="multipart/form-data"> 
+<label for="accountNum" style="text-align:center;">16-Digit Account Number:</label><br>
+<input id="accountNum" name="accountNum" value="" type="text" pattern='.{16}+' maxlength="16"><br>
+<!-- they are both numbers, given a pattern limitation to require 16 digits.s -->
+<label for="pinNum" style="text-align:center;">4-Digit Pin Number:</label><br>
+<input id="pinNum" name="pinNum" value="" type="text" pattern='.{4}+' maxlength="4"><br>
+<br> <input value="Submit" type="submit"> </form>
+</div>
+</body>
+</html>

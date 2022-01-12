@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title></title>
+</head>
+<body style="background-color:powderblue;">
+<h1 align="center"><br>
+</h1>
+<br>
+<br>
+<h1 style="text-align:center;">Login</h1>
+<p style="text-align:center;">Insert Information<br>
+</p>
+
+<form action="{{page}}" method="post" enctype="multipart/form-data"> 
+<label for="userName" style="text-align:center;">Username:</label><br>
+<input id="userName" name="userName" value="username" type="text"><br>
+
+<label for="password" style="text-align:center;">Password:</label><br>
+<input id="password" name="password" value="password" type="text"><br>
+<br> <input value="Submit" type="submit"> </form>
+</div>
+</body>
+</html>

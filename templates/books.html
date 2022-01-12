@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+ <body>
+    bookName, author, pubDate, ISBN, desc, traVal, retPrice, quant
+ <table border = 1>
+ <thead>
+ <td>Book Name</td>
+ <td>author</td>
+ <td>pubDate</td>
+ <td>ISBN</td>
+ <td>desc</td>
+ <td>traVal</td>
+ <td>retPrice</td>
+ <td>quant</td>
+ </thead>
+
+ {% for row in rows %}
+ <tr>
+ <td>{{row["bookName"]}}</td>
+ <td>{{row['author']}}</td>
+ <td>{{row['pubDate']}}</td>
+ <td>{{row['ISBN']}}</td>
+ <td>{{row['desc']}}</td>
+ <td>{{row['traVal']}}</td>
+ <td>{{row['retPrice']}}</td>
+ <td>{{row['quant']}}</td>
+ </tr>
+ {% endfor %}
+ </table>
+ </body>
+</html>
